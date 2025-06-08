@@ -33,13 +33,14 @@ class SliderPuzzle() :
         
 
     def print_board(self) -> None:
-        """Prints the game board to the console with the player position marked."""
+        """Prints the current game board to the console."""
         board_with_player = copy.deepcopy(self.board)
-        board_with_player[self.player_r][self.player_c] = 'P'
+        board_with_player[self.player_r][self.player_c] = '☺'
         for row in board_with_player:
-            print(" ".join(str(cell) for cell in row))
+            # Use visually distinct characters for better readability
+            print(" ".join(str(cell).replace('1', '■').replace('0', '.').replace('X', '*') for cell in row))
         print(f"Moves: {self.moves}")
-        print(f"Unmarked Cells: {self.count_unmarked_cells}")
+        print(f"Unmarked Cells Remaining: {self.count_unmarked_cells}")
         print("\n")
         
     def get_player_position(self) -> tuple[int, int] :
